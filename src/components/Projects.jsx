@@ -21,11 +21,11 @@ const projects = [
     // no link → shows default button
   },
   {
-    title: "Website - MRL Real Estate",
-    description: "A sleek real estate platform built with React + Vite, featuring property listings, advanced filters (price, location, type), detailed property views, responsive design and smooth user experience.",
-    tags: ["Javascript", "React", "Tailwind CSS"],
-    image: "/img1.png",
-    link: "https://mrl-real-estate-psi.vercel.app"   // ← your real Vercel link
+    title: "Repairing-CMS",
+    description: "A full-stack Repairing-CMS web application with user authentication, repair service listings, and online booking system. Includes an admin dashboard for managing services, users, and bookings, built using modern web technologies.",
+    tags: ["Javascript", "React", "Tailwind CSS", "mongodbAtlas", "Node.js", "Express.js"],
+    image: "/img4.png",
+    link: "https://repairing-app-cms-4oyk.vercel.app/"   // ← your real Vercel link
     // no link → shows default button
   }
 ];
