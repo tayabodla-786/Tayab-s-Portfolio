@@ -1,5 +1,7 @@
 import React, { useLayoutEffect, useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { Canvas } from '@react-three/fiber';
+import Hero3DObject from './three/Hero3DObject.jsx';
 
 const Hero = () => {
     const badgeRef = useRef(null);
@@ -38,7 +40,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="relative min-h-[calc(100vh-80px)] flex items-center justify-center bg-[#0a192f] px-6 md:px-12 lg:px-20 py-20 overflow-hidden"
+            className="relative min-h-[calc(100vh-80px)] flex items-center justify-center bg-transparent px-6 md:px-12 lg:px-20 py-20 overflow-hidden"
         >
             <div ref={containerRef} className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -70,15 +72,13 @@ const Hero = () => {
                 </div>
 
                 {/* Illustration */}
-                <div ref={illustrationRef} className="relative flex justify-center md:justify-end">
-                    <div className="relative w-full max-w-md md:max-w-xl">
+                <div ref={illustrationRef} className="relative flex justify-center md:justify-end w-full">
+                    <div className="relative w-full max-w-md md:max-w-xl aspect-square md:aspect-auto md:h-[500px]">
                         <div className="pointer-events-none absolute -inset-[2px] rounded-[2.5rem] bg-gradient-to-r from-teal-400 via-cyan-400 to-indigo-500 opacity-80" />
-                        <div className="relative rounded-[2.25rem] overflow-hidden bg-gradient-to-br from-slate-800/80 via-slate-900/95 to-slate-950/95 shadow-[0_32px_90px_rgba(15,23,42,0.9)] group">
-                            <img
-                                src="https://cdn3d.iconscout.com/3d/premium/thumb/web-developer-4506461-3738664.png"
-                                alt="Full Stack Developer Illustration"
-                                className="relative w-full h-auto object-contain brightness-110 contrast-110 transition-transform duration-700 group-hover:scale-105 group-hover:-translate-y-1"
-                            />
+                        <div className="relative w-full h-full rounded-[2.25rem] overflow-hidden bg-gradient-to-br from-slate-800/40 via-slate-900/50 to-slate-950/50 shadow-[0_32px_90px_rgba(15,23,42,0.9)] backdrop-blur-sm flex items-center justify-center">
+                            <Canvas className="w-full h-full cursor-grab active:cursor-grabbing" camera={{ position: [0, 0, 5], fov: 50 }}>
+                                <Hero3DObject />
+                            </Canvas>
                         </div>
                     </div>
                 </div>
