@@ -69,6 +69,11 @@ const Hero = () => {
                             Download CV
                         </a>
                     </div>
+
+                    <div className="hero-scroll-cue" aria-hidden="true">
+                        <span>Scroll to explore</span>
+                        <span className="hero-scroll-line" />
+                    </div>
                 </div>
 
                 {/* Illustration */}
