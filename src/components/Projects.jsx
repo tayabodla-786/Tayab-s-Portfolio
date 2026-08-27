@@ -1,141 +1,118 @@
-import React, { useLayoutEffect, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useState } from 'react';
+import { projectsData } from '../data/portfolioData.js';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const projects = [
-  {
-    title: "EDU-CARE-LMS",
-    description: "A sleek real estate platform built with React + Vite, featuring property listings, advanced filters (price, location, type), detailed property views, responsive design and smooth user experience.",
-    tags: ["Javascript", "React", "Tailwind CSS", "mongodbAtlas", "Node.js", "Express.js", "React Router"],
-    image: "/img3.png",
-    link: "https://lms-frontend-nine-kappa.vercel.app"   // ← your real Vercel link
-  },
-  {
-    title: "Rent a Car",
-    description: "A full-stack Rent-a-Car web application with user authentication, car listings, and online booking system. Includes an admin dashboard for managing cars, users, and bookings, built using modern web technologies.",
-    tags: ["Javascript", "React", "Tailwind CSS", "mongodbAtlas", "Node.js", "Express.js"],
-    image: "/img2.png",
-    link: "https://rent-a-car-frontend-private.vercel.app"   // ← your real Vercel link
-    // no link → shows default button
-  },
-  {
-    title: "Repairing-CMS",
-    description: "A full-stack Repairing-CMS web application with user authentication, repair service listings, and online booking system. Includes an admin dashboard for managing services, users, and bookings, built using modern web technologies.",
-    tags: ["Javascript", "React", "Tailwind CSS", "mongodbAtlas", "Node.js", "Express.js"],
-    image: "/img4.png",
-    link: "https://repairing-app-cms-4oyk.vercel.app/"   // ← your real Vercel link
-    // no link → shows default button
-  }
-];
+const SmsPreview = () => (
+  <div className="sms-preview">
+    <aside className="sms-sidebar">
+      <strong>SMS</strong>
+      <span>School Management System</span>
+      <i />
+      <b>Dashboard</b>
+      <span>Students</span>
+      <span>Teachers</span>
+      <span>Classes</span>
+      <span>Users</span>
+    </aside>
+    <div className="sms-main">
+      <small>Theme: Light</small>
+      <h3>Admin Dashboard</h3>
+      <p>Overview of your school management system</p>
+      <div className="sms-stats">
+        <div><span>Total Students</span><strong>2</strong></div>
+        <div><span>Total Teachers</span><strong>2</strong></div>
+        <div><span>Total Classes</span><strong>0</strong></div>
+      </div>
+      <h4>Quick Actions</h4>
+      <div className="sms-actions"><b>Add New Student</b><b>Add New Teacher</b><b>Create New Class</b></div>
+    </div>
+  </div>
+);
 
 const Projects = () => {
-  const sectionRef = useRef(null);
-  const headerRef = useRef(null);
-  const gridRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const header = headerRef.current;
-    const grid = gridRef.current;
-    if (header) gsap.set(header, { y: 30, opacity: 0 });
-    if (grid?.children?.length) gsap.set(grid.children, { y: 50, opacity: 0 });
-  }, []);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const header = headerRef.current;
-    const grid = gridRef.current;
-    if (!section || !header || !grid) return;
-
-    const ctx = gsap.context(() => {
-      gsap.to(header, {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: section, start: 'top 85%', toggleActions: 'play none none none' },
-      });
-      gsap.to(grid.children, {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: section, start: 'top 75%', toggleActions: 'play none none none' },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const [hoveredIndex, setHoveredIndex] = useState(1); // Item 2 active by default like screenshot
 
   return (
-    <section id="projects" ref={sectionRef} className="py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div ref={headerRef} className="flex flex-col items-center mb-16">
-          <div className="flex items-center gap-2 text-teal-400 mb-4">
-            <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
-            <h2 className="text-xl font-bold text-white uppercase tracking-wider">Work</h2>
+    <section id="work" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-[#0a0a0c] text-white select-none transition-colors">
+      <div className="max-w-7xl mx-auto space-y-12">
+
+        {/* Top Year Tag centered above line (Matching Screenshot) */}
+        <div className="flex justify-center items-center text-xs font-mono uppercase tracking-widest text-white/50">
+          <span>2026</span>
+        </div>
+
+        {/* UX Machina Capabilities / Works Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-6">
+
+          {/* Left Column: Title (Matching Screenshot) */}
+          <div className="lg:col-span-4">
+            <h2 className="text-4xl sm:text-6xl font-light text-white  tracking-tight sticky top-28">
+              Works
+            </h2>
           </div>
+
+          {/* Right Column: Interactive List (Matching Screenshot) */}
+          <div className="lg:col-span-8 border-t border-b border-white/20 py-2">
+            {projectsData.map((project, index) => {
+              const isHovered = hoveredIndex === index;
+              const tagsString = project.frameworks.map((fw) => fw.name).join(', ').toUpperCase();
+
+              return (
+                <div
+                  key={project.id}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onClick={() => window.open(project.href, '_blank')}
+                  className={`relative cursor-pointer transition-all duration-300 border-b border-white/10 last:border-none ${
+                    isHovered
+                      ? 'bg-white text-[#0a0a0c] my-3 py-8 px-6 sm:px-8 rounded-sm shadow-2xl scale-[1.01]'
+                      : 'text-white/80 py-7 px-4 hover:pl-6 hover:text-white'
+                  }`}
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative z-10">
+
+                    {/* Left Side: Counter + Project Title */}
+                    <div className="flex items-center gap-6 shrink-0">
+                      <span className={`ux-step text-xs tracking-wider ${isHovered ? 'text-[#ff375f]' : 'text-white/40'}`}>
+                        <em>/0{index + 1}</em>
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-light tracking-wide">
+                        {project.name}
+                      </h3>
+                    </div>
+
+                    {/* Center Floating Hover Preview Card (Matching Screenshot Popup) */}
+                    {isHovered && (
+                      <div className="sm:absolute left-1/2 top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-20 w-64 h-36 rounded-sm overflow-hidden border border-white/20 shadow-2xl transform hover:scale-105 transition-transform bg-black pointer-events-none">
+                        {project.name === 'SMS System' ? (
+                          <SmsPreview />
+                        ) : project.image ? (
+                          <img
+                            src={project.image}
+                            alt={project.name}
+                            className="w-full h-full object-cover object-top"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#ff375f]/30 via-[#141419] to-[#0a84ff]/30 p-4 text-center">
+                            <span className="ux-step text-xs text-white/80"><em>{project.name}</em></span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Right Side: Framework / Capability Tags */}
+                    <div className="text-right shrink-0">
+                      <span className={`text-[10px] sm:text-xs font-mono uppercase tracking-widest ${isHovered ? 'text-[#0a0a0c]/60' : 'text-white/45'}`}>
+                        {tagsString}
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-teal-500/50 transition-all duration-300 group hover:-translate-y-2 hover:shadow-2xl hover:shadow-teal-900/20"
-            >
-              {/* Image */}
-              <div className="h-48 overflow-hidden relative">
-                <div className="absolute inset-0 bg-teal-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-overlay"></div>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 space-y-4">
-                <h3 className="text-xl font-bold text-white group-hover:text-teal-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs font-semibold px-3 py-1 bg-slate-800 text-teal-400 rounded-full border border-slate-700"
-                    >
-                      {tag.toUpperCase()}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Button with real link or placeholder */}
-                <div className="pt-4">
-                  {project.link ? (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full py-3 bg-teal-600 hover:bg-teal-500 text-white font-bold rounded-lg transition-all duration-300 uppercase text-sm tracking-wider text-center shadow-md hover:shadow-teal-500/30"
-                    >
-                      Open Project
-                    </a>
-                  ) : (
-                    <button className="w-full py-3 bg-slate-800 hover:bg-teal-500 text-teal-400 hover:text-slate-900 font-bold rounded-lg transition-all duration-300 uppercase text-sm tracking-wider">
-                      Acessar
-                    </button>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

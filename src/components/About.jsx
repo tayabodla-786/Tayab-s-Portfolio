@@ -1,128 +1,73 @@
-import React, { useLayoutEffect, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import React from 'react';
+import { aboutData } from '../data/portfolioData.js';
 
-gsap.registerPlugin(ScrollTrigger);
+const techClients = [
+  'React.js', 'Node.js', 'MongoDB', 'Express.js',
+  'Three.js', 'Tailwind CSS', 'Vite', 'Vercel',
+  'REST APIs', 'PostgreSQL', 'Stripe', 'Docker'
+];
 
 const About = () => {
-  const sectionRef = useRef(null);
-  const imageContainerRef = useRef(null);
-  const contentRef = useRef(null);
-
-  useLayoutEffect(() => {
-    const image = imageContainerRef.current;
-    const content = contentRef.current;
-    if (image) gsap.set(image, { y: 50, opacity: 0 });
-    if (content?.children?.length) gsap.set(content.children, { y: 40, opacity: 0 });
-  }, []);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const image = imageContainerRef.current;
-    const content = contentRef.current;
-    if (!section || !image || !content) return;
-
-    const ctx = gsap.context(() => {
-      gsap.to(image, {
-        y: 0,
-        opacity: 1,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: section, start: 'top 85%', toggleActions: 'play none none none' },
-      });
-      gsap.to(content.children, {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none none' },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className="py-20 px-4"
-    >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section id="about" className="relative py-24 px-6 sm:px-12 lg:px-20 border-t border-white/10 bg-[#0a0a0c]">
+      <div className="max-w-7xl mx-auto space-y-16">
+        {/* UX Machina Header */}
+        <div className="flex flex-row justify-between items-baseline border-b border-white/10 pb-6">
+          <div className="flex items-center gap-3">
+            <span className="ux-step text-base text-[#ff375f]"><em>/03</em></span>
+            <h2 className="text-xl sm:text-2xl font-light text-white uppercase tracking-wider">About</h2>
+          </div>
+          <span className="text-xs uppercase tracking-widest text-white/50">Engineering Bio & Tech Stack</span>
+        </div>
 
-        {/* Avatar / Image */}
-        <div
-          ref={imageContainerRef}
-          className="flex flex-col items-center md:items-start md:pl-12"
-        >
-          <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-br from-teal-400 to-transparent mb-6">
-            <div className="w-full h-full rounded-full overflow-hidden bg-[#0a192f] border-4 border-[#0a192f]">
-              <img
-                src="https://i.ibb.co/4ZvyqFTQ/profile.jpg"
-                alt="Tayyab Imran"
-                className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
-              />
+        {/* Sleek 2-Column Bio Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+          {/* Left Column: Bio Narrative & Core Focus */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="space-y-4">
+              <h3 className="ux-step text-2xl text-white/90">
+                <em>Bio & Philosophy</em>
+              </h3>
+              
+              <p className="text-base sm:text-lg text-white/80 font-light leading-relaxed">
+                {aboutData.intro}
+              </p>
+            </div>
+
+            <div className="space-y-4 pt-6 border-t border-white/10">
+              <h4 className="text-xs uppercase tracking-widest text-[#ff375f]">Core Focus Areas</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {aboutData.highlights.map((highlight, index) => (
+                  <div key={index} className="p-4 border border-white/10 bg-[#121216]/50 hover:border-white/30 transition-all flex items-start gap-3">
+                    <span className="ux-step text-xs text-[#ff375f] shrink-0"><em>/0{index + 1}</em></span>
+                    <span className="text-xs text-white/80 leading-relaxed font-light">{highlight}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="md:pl-4 text-center md:text-left">
-            <h4 className="text-xl font-bold text-white mb-3 tracking-wide">
-              Tayyab Imran
-            </h4>
-            <div className="flex justify-center md:justify-start gap-6 text-teal-400 text-2xl">
-              <a
-                href="mailto:tayabodla786@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-all duration-300 hover:-translate-y-1"
-              >
-                <FaEnvelope />
-              </a>
-              <a
-                href="https://github.com/tayabodla-786"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-all duration-300 hover:-translate-y-1"
-              >
-                <FaGithub />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/tayyabimran"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-all duration-300 hover:-translate-y-1"
-              >
-                <FaLinkedin />
-              </a>
+          {/* Right Column: Tech Stack Grid */}
+          <div className="lg:col-span-5 space-y-6 lg:border-l lg:border-white/10 lg:pl-12">
+            <h3 className="ux-step text-xl text-white/90">
+              <em>Technologies & Stack</em>
+            </h3>
+
+            <div className="grid grid-cols-2 gap-3">
+              {techClients.map((tech, index) => (
+                <div
+                  key={index}
+                  className="p-4 border border-white/10 bg-[#121216]/50 hover:border-[#ff375f] transition-all text-xs font-medium uppercase tracking-wider text-white/80 flex items-center justify-between group cursor-default"
+                >
+                  <span className="group-hover:text-white transition-colors">{tech}</span>
+                  <span className="ux-step text-[10px] text-white/30 group-hover:text-[#ff375f] transition-colors"><em>0{index + 1}</em></span>
+                </div>
+              ))}
             </div>
           </div>
+
         </div>
-
-        {/* Content */}
-        <div ref={contentRef} className="space-y-6">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-2 h-2 bg-teal-400 rounded-sm"></div>
-            <h2 className="text-lg font-bold text-white uppercase tracking-widest">
-              About
-            </h2>
-          </div>
-
-          <h3 className="text-3xl font-bold text-white mb-4">
-            Know a little more about me
-          </h3>
-
-          <p className="text-slate-400 leading-relaxed text-lg">
-            I am a beginner <span className="text-white font-semibold">Full Stack Developer</span> with a strong focus on building scalable and performant web applications.
-            I love solving complex problems and turning ideas into reality through code.
-          </p>
-          <p className="text-slate-400 leading-relaxed text-lg">
-            With expertise in <span className="text-white font-semibold">MERN Stack</span> and modern web technologies, I deliver high-quality solutions tailored to client needs.
-            Always eager to learn and adapt to new challenges.
-          </p>
-        </div>
-
       </div>
     </section>
   );

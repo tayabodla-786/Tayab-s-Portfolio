@@ -1,133 +1,118 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer theme {
+  :root, :host {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --color-bg: #0a0a0c;
+    --color-surface: #121216;
+    --color-foreground: #ffffff;
+    --color-muted: rgba(255, 255, 255, 0.55);
+    --color-hairline: rgba(255, 255, 255, 0.12);
+    --color-accent: #ff375f;
+  }
+}
 
 :root {
-    font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-
-    color-scheme: dark;
-    /* REMOVE or comment out the next line – it's causing inheritance issues */
-    /* color: rgba(255, 255, 255, 0.87); */
-
-    background-color: #0a192f;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-/* In your global CSS or component style */
-#hero, #hero * {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  background-color: #0a0a0c;
+  color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4);   /* very subtle shadow → makes text pop */
-}
-
-/* Or for the paragraph only */
-.hero-paragraph {
-  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  letter-spacing: 0.2px;
 }
 
 body {
-    margin: 0;
-    min-width: 320px;
-    min-height: 100vh;
-    background-color: #0a192f;
-    color: #ccd6f6;               /* this is fine as a safe fallback */
-    overflow-x: hidden;
-    cursor: none;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #0a0a0c;
+  color: #ffffff;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
 }
 
-  a, button, [role='button'] {
-    cursor: none;
-  }
+::selection {
+  background: #ff375f;
+  color: #ffffff;
+}
 
-  .scroll-progress {
-    position: fixed;
-    inset: 0 0 auto;
-    z-index: 100;
-    height: 3px;
-    transform: scaleX(0);
-    transform-origin: left center;
-    background: #5eead4;
-    box-shadow: 0 0 18px rgba(94, 234, 212, 0.8);
-    pointer-events: none;
-  }
+/* Serif italic counter tags matching UX Machina /01, /02 */
+.ux-step {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
 
-  .cursor-dot,
-  .cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 110;
-    pointer-events: none;
-    border-radius: 999px;
-    transform: translate(-50%, -50%);
-  }
+/* Background grid & radial gradient overlay */
+.ux-hero-bg {
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(255, 55, 95, 0.07), transparent 60%),
+    radial-gradient(circle at 80% 20%, rgba(10, 132, 255, 0.08), transparent 50%),
+    #0a0a0c;
+}
 
-  .cursor-dot {
-    width: 7px;
-    height: 7px;
-    background: #5eead4;
-    box-shadow: 0 0 14px rgba(94, 234, 212, 0.9);
-  }
+.ux-grid-border {
+  border-color: rgba(255, 255, 255, 0.12);
+}
 
-  .cursor-ring {
-    width: 34px;
-    height: 34px;
-    border: 1px solid rgba(94, 234, 212, 0.55);
-    transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-  }
+/* Custom Lenis Scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
 
-  .cursor-ring.is-hovering {
-    width: 54px;
-    height: 54px;
-    border-color: rgba(94, 234, 212, 0.9);
-    background: rgba(94, 234, 212, 0.08);
-  }
-
-  .hero-scroll-cue {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 42px;
-    color: rgba(148, 163, 184, 0.72);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  .hero-scroll-line {
-    position: relative;
-    display: inline-block;
-    width: 64px;
-    height: 1px;
-    overflow: hidden;
-    background: rgba(94, 234, 212, 0.25);
-  }
-
-  .hero-scroll-line::after {
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: 28px;
-    background: #5eead4;
-    content: '';
-    animation: scan-line 1.8s ease-in-out infinite;
-  }
-
-  @keyframes scan-line {
-    0% { transform: translateX(-100%); }
-    50%, 100% { transform: translateX(230%); }
-  }
-
-  @media (pointer: coarse), (prefers-reduced-motion: reduce) {
-    body, a, button, [role='button'] { cursor: auto; }
-    .cursor-dot, .cursor-ring { display: none; }
-  }
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
 
 #root {
-    width: 100%;
+  width: 100%;
+}
+
+.sms-preview {
+  display: flex;
+  min-height: 100%;
+  background: #05070d;
+  color: #dbe6ff;
+  font-family: var(--font-sans);
+}
+
+.sms-sidebar {
+  display: flex;
+  flex: 0 0 28%;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 12px;
+  background: #111a2b;
+  font-size: 8px;
+}
+
+.sms-sidebar strong { color: #4d99ff; font-size: 22px; }
+.sms-sidebar span:first-of-type { color: #8da2c5; margin-bottom: 18px; }
+.sms-sidebar i { height: 1px; margin: 0 -12px 8px; background: rgba(255, 255, 255, 0.08); }
+.sms-sidebar b { padding: 9px 7px; border-radius: 7px; background: #2454f5; color: white; }
+
+.sms-main { flex: 1; padding: 26px 18px; }
+.sms-main small { float: right; padding: 5px 8px; border: 1px solid rgba(255, 255, 255, 0.13); border-radius: 12px; color: #aab8d0; font-size: 7px; }
+.sms-main h3 { margin: 18px 0 3px; color: white; font-size: 19px; }
+.sms-main p { margin: 0; color: #8798b7; font-size: 8px; }
+.sms-stats, .sms-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 18px; }
+.sms-stats div, .sms-actions b { min-height: 42px; padding: 10px; border: 1px solid rgba(140, 173, 228, 0.13); border-radius: 10px; background: #111a2b; }
+.sms-stats span { display: block; color: #8da2c5; font-size: 7px; }
+.sms-stats strong { display: block; margin-top: 3px; color: #4d99ff; font-size: 19px; }
+.sms-main h4 { margin: 20px 0 0; color: white; font-size: 11px; }
+.sms-actions b { color: #dbe6ff; font-size: 8px; }
+
+@media (max-width: 640px) {
+  .sms-main { padding: 14px 10px; }
+  .sms-sidebar { padding: 12px 8px; }
+  .sms-sidebar strong { font-size: 16px; }
+  .sms-stats, .sms-actions { gap: 4px; }
+  .sms-stats div, .sms-actions b { padding: 6px; }
 }
