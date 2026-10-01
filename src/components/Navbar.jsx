@@ -23,15 +23,9 @@ const Navbar = () => {
 
   return (
     <header
-<<<<<<< HEAD
       className={`hud-font fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-[#050609]/55 backdrop-blur-md border-b border-white/10 py-4'
-=======
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#0a0a0c]/80 backdrop-blur-md border-b border-white/10 py-4'
->>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
           : 'bg-transparent py-6'
       }`}
     >
@@ -63,11 +57,7 @@ const Navbar = () => {
         </ScrollLink>
 
         {/* Desktop Nav Items */}
-<<<<<<< HEAD
         <nav className="nav-pill hidden md:flex items-center gap-8 px-7 py-2.5 rounded-full">
-=======
-        <nav className="hidden md:flex items-center space-x-10">
->>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
           {navLinks.map((link, index) => (
             <ScrollLink
               key={link.name}
@@ -76,16 +66,10 @@ const Navbar = () => {
               spy={true}
               offset={-80}
               duration={600}
-<<<<<<< HEAD
               activeClass="nav-link--active"
               className="nav-link flex items-center gap-1.5 text-white/70 hover:text-white text-xs uppercase tracking-[0.2em] transition-colors cursor-pointer group"
             >
               <span className="ux-step text-white/40 group-hover:text-[#3ee8ff] transition-colors">
-=======
-              className="flex items-center gap-1.5 text-white/70 hover:text-white text-sm font-medium tracking-wide transition-colors cursor-pointer group"
-            >
-              <span className="ux-step text-white/40 group-hover:text-[#ff375f] transition-colors">
->>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
                 <em>/0{index + 1}</em>
               </span>
               <span>{link.name}</span>
@@ -105,15 +89,9 @@ const Navbar = () => {
 
       {/* Mobile Slide-Over Overlay */}
       {isOpen && (
-<<<<<<< HEAD
         <div className="md:hidden fixed inset-0 top-[70px] bg-[#050609]/95 backdrop-blur-lg z-40 px-8 py-12 flex flex-col justify-between border-t border-white/10">
           <div className="space-y-8">
             {navLinks.map((link, index) => (
-=======
-        <div className="md:hidden fixed inset-0 top-[70px] bg-[#0a0a0c] z-40 px-8 py-12 flex flex-col justify-between border-t border-white/10">
-          <div className="space-y-8">
-            {navLinks.map((link) => (
->>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
               <ScrollLink
                 key={link.name}
                 to={link.to}
@@ -123,11 +101,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
                 className="flex items-center gap-4 text-2xl font-light text-white/90 hover:text-white cursor-pointer"
               >
-<<<<<<< HEAD
                 <span className="ux-step text-sm text-[#3ee8ff]"><em>/0{index + 1}</em></span>
-=======
-                <span className="ux-step text-sm text-[#ff375f]"><em>{link.step}</em></span>
->>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
                 <span>{link.name}</span>
               </ScrollLink>
             ))}
