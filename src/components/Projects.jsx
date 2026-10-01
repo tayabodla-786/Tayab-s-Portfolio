@@ -32,11 +32,16 @@ const Projects = () => {
   const [hoveredIndex, setHoveredIndex] = useState(1); // Item 2 active by default like screenshot
 
   return (
+<<<<<<< HEAD
     <section id="works"className="relative py-28 px-6 sm:px-12 lg:px-20 text-white select-none transition-colors hud-font">
+=======
+    <section id="work" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-[#0a0a0c] text-white select-none transition-colors">
+>>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
       <div className="max-w-7xl mx-auto space-y-12">
 
         {/* Top Year Tag centered above line (Matching Screenshot) */}
         <div className="flex justify-center items-center text-xs font-mono uppercase tracking-widest text-white/50">
+<<<<<<< HEAD
           <span>// FULL INDEX · 2026</span>
         </div>
 
@@ -114,6 +119,84 @@ const Projects = () => {
 
         </div>
 
+=======
+          <span>2026</span>
+        </div>
+
+        {/* UX Machina Capabilities / Works Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start pt-6">
+
+          {/* Left Column: Title (Matching Screenshot) */}
+          <div className="lg:col-span-4">
+            <h2 className="text-4xl sm:text-6xl font-light text-white  tracking-tight sticky top-28">
+              Works
+            </h2>
+          </div>
+
+          {/* Right Column: Interactive List (Matching Screenshot) */}
+          <div className="lg:col-span-8 border-t border-b border-white/20 py-2">
+            {projectsData.map((project, index) => {
+              const isHovered = hoveredIndex === index;
+              const tagsString = project.frameworks.map((fw) => fw.name).join(', ').toUpperCase();
+
+              return (
+                <div
+                  key={project.id}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onClick={() => window.open(project.href, '_blank')}
+                  className={`relative cursor-pointer transition-all duration-300 border-b border-white/10 last:border-none ${
+                    isHovered
+                      ? 'bg-white text-[#0a0a0c] my-3 py-8 px-6 sm:px-8 rounded-sm shadow-2xl scale-[1.01]'
+                      : 'text-white/80 py-7 px-4 hover:pl-6 hover:text-white'
+                  }`}
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative z-10">
+
+                    {/* Left Side: Counter + Project Title */}
+                    <div className="flex items-center gap-6 shrink-0">
+                      <span className={`ux-step text-xs tracking-wider ${isHovered ? 'text-[#ff375f]' : 'text-white/40'}`}>
+                        <em>/0{index + 1}</em>
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-light tracking-wide">
+                        {project.name}
+                      </h3>
+                    </div>
+
+                    {/* Center Floating Hover Preview Card (Matching Screenshot Popup) */}
+                    {isHovered && (
+                      <div className="sm:absolute left-1/2 top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-20 w-64 h-36 rounded-sm overflow-hidden border border-white/20 shadow-2xl transform hover:scale-105 transition-transform bg-black pointer-events-none">
+                        {project.name === 'SMS System' ? (
+                          <SmsPreview />
+                        ) : project.image ? (
+                          <img
+                            src={project.image}
+                            alt={project.name}
+                            className="w-full h-full object-cover object-top"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#ff375f]/30 via-[#141419] to-[#0a84ff]/30 p-4 text-center">
+                            <span className="ux-step text-xs text-white/80"><em>{project.name}</em></span>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Right Side: Framework / Capability Tags */}
+                    <div className="text-right shrink-0">
+                      <span className={`text-[10px] sm:text-xs font-mono uppercase tracking-widest ${isHovered ? 'text-[#0a0a0c]/60' : 'text-white/45'}`}>
+                        {tagsString}
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+
+>>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
       </div>
     </section>
   );

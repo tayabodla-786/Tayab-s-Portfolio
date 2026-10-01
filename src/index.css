@@ -1,5 +1,9 @@
 @import "tailwindcss";
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap');
+=======
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
+>>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
 
 @layer theme {
   :root, :host {
@@ -19,7 +23,11 @@
   line-height: 1.5;
   font-weight: 400;
   color-scheme: dark;
+<<<<<<< HEAD
   background-color: #050609;
+=======
+  background-color: #0a0a0c;
+>>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
   color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,7 +39,11 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+<<<<<<< HEAD
   background-color: #050609;
+=======
+  background-color: #0a0a0c;
+>>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
   color: #ffffff;
   overflow-x: hidden;
   font-family: var(--font-sans);
@@ -115,6 +127,7 @@ html.lenis, html.lenis body {
   .sms-sidebar strong { font-size: 16px; }
   .sms-stats, .sms-actions { gap: 4px; }
   .sms-stats div, .sms-actions b { padding: 6px; }
+<<<<<<< HEAD
 }
 /* ---------- 3D Work archive ---------- */
 .work3d-ui {
@@ -439,3 +452,6 @@ html.lenis, html.lenis body {
   .scroll-cue span { animation: none; }
   .preloader { transition: none; }
 }
+=======
+}
+>>>>>>> 5959f319b27dc12217886c5dd1392b79a78fd868
