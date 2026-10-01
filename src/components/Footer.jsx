@@ -3,7 +3,7 @@ import { Link as ScrollLink } from 'react-scroll';
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t border-white/10 py-10 px-6 sm:px-12 lg:px-20 bg-[#0a0a0c] text-white/60 font-sans text-xs uppercase tracking-wider">
+    <footer className="relative w-full border-t border-white/10 py-10 px-6 sm:px-12 lg:px-20 bg-[#050609]/60 backdrop-blur-md text-white/60 hud-font text-xs uppercase tracking-[0.2em]">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-2 text-white">
           <span className="font-semibold">Tayyab</span>
@@ -26,14 +26,14 @@ const Footer = () => {
         </div>
 
         <p className="text-center text-white/40 text-[11px]">
-          &copy; {new Date().getFullYear()} Tayyab Imran. UX Machina 3D Architecture.
+          &copy; {new Date().getFullYear()} Tayyab Imran. Rendered in real time with WebGL.
         </p>
 
         <ScrollLink
           to="hero"
           smooth={true}
           duration={800}
-          className="hover:text-[#ff375f] transition-colors cursor-pointer flex items-center gap-1"
+          className="hover:text-[#3ee8ff] transition-colors cursor-pointer flex items-center gap-1"
         >
           <span>Back to Top</span>
           <span>&uarr;</span>

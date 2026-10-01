@@ -32,12 +32,12 @@ const Projects = () => {
   const [hoveredIndex, setHoveredIndex] = useState(1); // Item 2 active by default like screenshot
 
   return (
-    <section id="work" className="relative py-28 px-6 sm:px-12 lg:px-20 bg-[#0a0a0c] text-white select-none transition-colors">
+    <section id="works"className="relative py-28 px-6 sm:px-12 lg:px-20 text-white select-none transition-colors hud-font">
       <div className="max-w-7xl mx-auto space-y-12">
 
         {/* Top Year Tag centered above line (Matching Screenshot) */}
         <div className="flex justify-center items-center text-xs font-mono uppercase tracking-widest text-white/50">
-          <span>2026</span>
+          <span>// FULL INDEX · 2026</span>
         </div>
 
         {/* UX Machina Capabilities / Works Grid Layout */}
@@ -45,13 +45,14 @@ const Projects = () => {
 
           {/* Left Column: Title (Matching Screenshot) */}
           <div className="lg:col-span-4">
-            <h2 className="text-4xl sm:text-6xl font-light text-white  tracking-tight sticky top-28">
-              Works
-            </h2>
+            <div className="sticky top-28 space-y-3">
+              <p className="ux-step text-[#2fd9c4]"><em>/04 Index</em></p>
+              <h2 className="text-4xl sm:text-6xl font-bold text-white tracking-tight">ALL WORKS</h2>
+            </div>
           </div>
 
           {/* Right Column: Interactive List (Matching Screenshot) */}
-          <div className="lg:col-span-8 border-t border-b border-white/20 py-2">
+          <div className="lg:col-span-8 border-t border-b border-white/20 py-2 bg-[#050609]/40 backdrop-blur-sm">
             {projectsData.map((project, index) => {
               const isHovered = hoveredIndex === index;
               const tagsString = project.frameworks.map((fw) => fw.name).join(', ').toUpperCase();
