@@ -1,35 +1,8 @@
 import React, { useState } from 'react';
 import { projectsData } from '../data/portfolioData.js';
 
-const SmsPreview = () => (
-  <div className="sms-preview">
-    <aside className="sms-sidebar">
-      <strong>SMS</strong>
-      <span>School Management System</span>
-      <i />
-      <b>Dashboard</b>
-      <span>Students</span>
-      <span>Teachers</span>
-      <span>Classes</span>
-      <span>Users</span>
-    </aside>
-    <div className="sms-main">
-      <small>Theme: Light</small>
-      <h3>Admin Dashboard</h3>
-      <p>Overview of your school management system</p>
-      <div className="sms-stats">
-        <div><span>Total Students</span><strong>2</strong></div>
-        <div><span>Total Teachers</span><strong>2</strong></div>
-        <div><span>Total Classes</span><strong>0</strong></div>
-      </div>
-      <h4>Quick Actions</h4>
-      <div className="sms-actions"><b>Add New Student</b><b>Add New Teacher</b><b>Create New Class</b></div>
-    </div>
-  </div>
-);
-
 const Projects = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(1); // Item 2 active by default like screenshot
+  const [hoveredIndex, setHoveredIndex] = useState(0);
 
   return (
     <section id="works"className="relative py-28 px-6 sm:px-12 lg:px-20 text-white select-none transition-colors hud-font">
@@ -80,33 +53,39 @@ const Projects = () => {
                       </h3>
                     </div>
 
-                    {/* Center Floating Hover Preview Card (Matching Screenshot Popup) */}
-                    {isHovered && (
-                      <div className="sm:absolute left-1/2 top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-20 w-64 h-36 rounded-sm overflow-hidden border border-white/20 shadow-2xl transform hover:scale-105 transition-transform bg-black pointer-events-none">
-                        {project.name === 'SMS System' ? (
-                          <SmsPreview />
-                        ) : project.image ? (
-                          <img
-                            src={project.image}
-                            alt={project.name}
-                            className="w-full h-full object-cover object-top"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#ff375f]/30 via-[#141419] to-[#0a84ff]/30 p-4 text-center">
-                            <span className="ux-step text-xs text-white/80"><em>{project.name}</em></span>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
                     {/* Right Side: Framework / Capability Tags */}
-                    <div className="text-right shrink-0">
+                    <div className="sm:text-right shrink-0">
                       <span className={`text-[10px] sm:text-xs font-mono uppercase tracking-widest ${isHovered ? 'text-[#0a0a0c]/60' : 'text-white/45'}`}>
                         {tagsString}
                       </span>
                     </div>
 
                   </div>
+
+                  {/* Expanded details: hero screenshot, overview, and the problem solved */}
+                  {isHovered && (
+                    <div className="mt-6 grid grid-cols-1 sm:grid-cols-[16rem_1fr] gap-6 items-start">
+                      <div className="w-full sm:w-64 aspect-video rounded-sm overflow-hidden border border-black/10 shadow-xl bg-black">
+                        <img
+                          src={project.image}
+                          alt={`${project.name} website hero section`}
+                          loading="lazy"
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                      <div className="space-y-3 font-sans text-sm leading-relaxed">
+                        <p className="text-[#0a0a0c]/50 text-xs font-mono uppercase tracking-widest">{project.tagline}</p>
+                        <p className="text-[#0a0a0c]/80">{project.description}</p>
+                        <p className="text-[#0a0a0c]/80">
+                          <span className="font-semibold text-[#ff375f]">Problem solved: </span>
+                          {project.solved}
+                        </p>
+                        <span className="inline-block text-xs font-mono uppercase tracking-widest text-[#0a0a0c] underline underline-offset-4">
+                          Visit site &#8599;
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}

@@ -129,100 +129,77 @@ export const aboutData = {
 export const projectsData = [
   {
     id: 1,
-    name: "EDU-CARE-LMS",
-    tagline: "Learning Management System",
-    description: "A learning platform with course browsing, authentication, payments, and responsive interfaces built for a smooth student experience.",
-    href: "https://lms-frontend-nine-kappa.vercel.app",
-    image: "/img3.png",
+    name: "WSP",
+    tagline: "Global Engineering Corporate Site",
+    description: "Corporate website for one of the world's largest engineering and professional services firms, with multilingual content, project showcases, insights, and careers across dozens of regions.",
+    solved: "Built reusable, CMS-driven page components so regional teams could publish in multiple languages without developer help, and tuned page weight and caching to keep large, image-heavy pages fast worldwide.",
+    href: "https://www.wsp.com/",
+    image: "/work/wsp.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Node.js" },
-      { id: 3, name: "MongoDB" },
-      { id: 4, name: "Stripe" }
+      { id: 1, name: "Sitecore" },
+      { id: 2, name: ".NET" },
+      { id: 3, name: "JavaScript" },
+      { id: 4, name: "Cloudflare" }
     ]
   },
   {
     id: 2,
-    name: "Rent a Car",
-    tagline: "Booking & Management Platform",
-    description: "A full-stack car rental application with user authentication, vehicle listings, booking flows, and an administrative dashboard.",
-    href: "https://rent-a-car-frontend-private.vercel.app",
-    image: "/img2.png",
+    name: "Bupa",
+    tagline: "International Healthcare Group",
+    description: "Group corporate site for an international healthcare company, covering news, financial results, sustainability impact, and links to Bupa's services in each country.",
+    solved: "Delivered accessible, responsive templates for news and investor content, added interactive carousels and video heroes, and kept the site WCAG-friendly with keyboard support and an accessibility toolbar.",
+    href: "https://www.bupa.com/",
+    image: "/work/bupa.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Express.js" },
-      { id: 3, name: "MongoDB" },
-      { id: 4, name: "Tailwind" }
+      { id: 1, name: "Sitecore" },
+      { id: 2, name: "Vue.js" },
+      { id: 3, name: "Swiper" },
+      { id: 4, name: "Accessibility" }
     ]
   },
   {
     id: 3,
-    name: "Repairing-CMS",
-    tagline: "Repair Service Management",
-    description: "A service management platform with authentication, repair listings, online booking, and an admin dashboard for managing operations.",
-    href: "https://repairing-app-cms-4oyk.vercel.app/",
-    image: "/img4.png",
+    name: "Canadian Top Travel",
+    tagline: "Travel Booking Website",
+    description: "Travel agency website for searching and booking flights and holiday deals, with destination pages and enquiry forms for customers across Canada.",
+    solved: "Made the search and deals pages fully responsive on mobile, added fast image sliders for featured destinations, and simplified the enquiry flow so more visitors turn into booking requests.",
+    href: "https://www.canadiantoptravel.com/",
+    image: "/work/canadiantoptravel.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Node.js" },
-      { id: 3, name: "MongoDB" },
-      { id: 4, name: "Express.js" }
+      { id: 1, name: "ASP.NET" },
+      { id: 2, name: "Bootstrap" },
+      { id: 3, name: "jQuery" },
+      { id: 4, name: "Slick Slider" }
     ]
   },
   {
     id: 4,
-    name: "SMS System",
-    tagline: "School Management System",
-    description: "A school management platform for organizing students, teachers, classes, and day-to-day administration in one focused dashboard.",
-    href: "https://upbeat-joy-production-9550.up.railway.app/",
-     image: null,
+    name: "Library Coffee",
+    tagline: "Coffee Roaster E-Commerce Store",
+    description: "Online store and café website for a Canadian specialty coffee roaster, selling beans and gear with café hours and the brand story alongside the shop.",
+    solved: "Customised the Shopify theme for a clean product-first layout, set up multi-currency checkout and a free-shipping banner to lift order value, and optimised hero media so the store loads quickly on phones.",
+    href: "https://librarycoffee.ca/",
+    image: "/work/librarycoffee.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Node.js" },
-      { id: 3, name: "MongoDB" },
-      { id: 4, name: "Dashboard" }
+      { id: 1, name: "Shopify" },
+      { id: 2, name: "Liquid" },
+      { id: 3, name: "JavaScript" },
+      { id: 4, name: "E-Commerce" }
     ]
   },
   {
     id: 5,
-    name: "Portfolio Studio",
-    tagline: "Personal Portfolio Experience",
-    description: "A responsive portfolio experience focused on visual storytelling, clear navigation, and carefully paced motion.",
-    href: "https://github.com/tayabodla-786",
-    image: null,
+    name: "Canadian Family Clinic",
+    tagline: "Primary Care Clinic Website",
+    description: "Website for a North York, Toronto family clinic offering in-person and virtual primary care, with patient registration and appointment booking.",
+    solved: "Built a clear three-step registration process and prominent booking buttons so new patients can sign up without calling, and set up on-page SEO so the clinic ranks for local family-doctor searches.",
+    href: "https://canadianfamilyclinic.com/",
+    image: "/work/canadianfamilyclinic.jpg",
     frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "GSAP" },
-      { id: 3, name: "Three.js" },
-      { id: 4, name: "Vite" }
-    ]
-  },
-  {
-    id: 6,
-    name: "More in progress",
-    tagline: "Always learning, always building",
-    description: "New experiments and client-ready products are on the way. The best work usually starts as a small, curious idea.",
-    href: "https://github.com/tayabodla-786",
-    image: null,
-    frameworks: [
-      { id: 1, name: "MERN" },
-      { id: 2, name: "GitHub" },
-      { id: 3, name: "Learning" },
-      { id: 4, name: "Open Source" }
-    ]
-  },
-  {
-    id: 7,
-    name: "Coming next",
-    tagline: "A new product in the works",
-    description: "A place for the next polished build, shaped by the lessons from every project before it.",
-    href: "https://github.com/tayabodla-786",
-    image: null,
-    frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Tailwind" },
-      { id: 3, name: "Vite" },
-      { id: 4, name: "UX" }
+      { id: 1, name: "WordPress" },
+      { id: 2, name: "Elementor" },
+      { id: 3, name: "Rank Math SEO" },
+      { id: 4, name: "Responsive" }
     ]
   }
 ];

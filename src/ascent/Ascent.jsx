@@ -107,7 +107,20 @@ const ProjectStage = ({ stage }) => {
       <p className="ascent-kicker !mb-1">{stage.name}</p>
       <h2 className="ascent-title">{p.name}</h2>
       <p className="ascent-sub">{p.tagline}</p>
+      {p.image && (
+        <img
+          src={p.image}
+          alt={`${p.name} website hero section`}
+          loading="lazy"
+          className="w-full aspect-video object-cover object-top rounded-md border border-white/15 my-3"
+        />
+      )}
       <p className="ascent-body">{p.description}</p>
+      {p.solved && (
+        <p className="ascent-body">
+          <strong>Problem solved:</strong> {p.solved}
+        </p>
+      )}
       <FieldData
         rows={[
           ['Stack', p.frameworks.map((f) => f.name).join(', ')],
